@@ -1,0 +1,571 @@
+$color: #ff2a2a;
+$pc: 900px;
+
+@mixin pc {
+  @media screen and (min-width: $pc) {
+    @content;
+  }
+}
+
+html {
+  font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", sans-serif;
+  font-weight: bold;
+}
+
+body {
+  // max-width: 860px;
+  text-align: center;
+  margin: 0 auto;
+  color: #333333;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.hide {
+  display: none;
+}
+
+p {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+
+  .logo {
+    margin-left: 25px;
+    margin-top: 25px;
+
+    img {
+      width: 100px;
+    }
+  }
+
+  .nav {
+    // background: $color;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    right: 0;
+    color: #fff;
+
+    .nav__item {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: $color;
+
+      img {
+        width: 100px;
+        position: absolute;
+        top: 25px;
+        left: 25px;
+      }
+
+      .nav__item_list {
+        margin-top: 110px;
+        margin-left: -30px;
+
+        li{
+          line-height: 40px;
+        }
+        a {
+          color: inherit;
+        }
+      }
+
+      .nav__item_btn {
+        display: inline-block;
+        position: relative;
+        box-sizing: border-box;
+        border: double 1px #fff;
+        padding: 10px 20px;
+        margin-top:13px;
+        z-index: 101;
+        color: inherit;
+      }
+      .nav__item_btn:hover{
+        background-color: #FFF;
+        color: $color;
+      }
+      .nav__item_btn::before {
+        content: "";
+        position: absolute;
+        top: 6px;
+        bottom: -10px;
+        right: -10px;
+        left: 6px;
+        border: solid 1px #fff;
+        z-index: 100;
+      }
+    }
+  }
+}
+
+.logo {
+  margin-left: 25px;
+  margin-top: 25px;
+
+  img {
+    width: 100px;
+  }
+}
+
+.red {
+  color: $color;
+  font-size: 24px;
+}
+
+.white {
+  color: #FFFFFF;
+}
+
+.openbtn1 {
+  position: relative;
+  /*ボタン内側の基点となるためrelativeを指定*/
+  background: $color;
+  z-index: 101;
+  cursor: pointer;
+  width: 75px;
+  height: 75px;
+  border-radius: 5px;
+  @include pc {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/*ボタン内側*/
+.openbtn1 span {
+  display: inline-block;
+  transition: all .4s;
+  /*アニメーションの設定*/
+  position: absolute;
+  left: 20px;
+  height: 3px;
+  border-radius: 2px;
+  background: #fff;
+  width: 45%;
+  @include pc {
+    left: 26px;
+  }
+}
+
+.openbtn1 span:nth-of-type(1) {
+  top: 26px;
+  @include pc {
+    top: 30px;
+  }
+}
+
+.openbtn1 span:nth-of-type(2) {
+  top: 37px;
+  @include pc {
+    top: 50px;
+  }
+}
+
+.openbtn1 span:nth-of-type(3) {
+  top: 48px;
+  @include pc {
+    top: 70px;
+  }
+}
+
+/*activeクラスが付与されると線が回転して×に*/
+
+.openbtn1.active span:nth-of-type(1) {
+  top: 30px;
+  left: 30px;
+  transform: translateY(6px) rotate(-45deg);
+  width: 30%;
+  @include pc {
+    top: 40px;
+    left: 30px;
+  }
+}
+
+.openbtn1.active span:nth-of-type(2) {
+  opacity: 0;
+  /*真ん中の線は透過*/
+}
+
+.openbtn1.active span:nth-of-type(3) {
+  top: 42px;
+  left: 30px;
+  transform: translateY(-6px) rotate(45deg);
+  width: 30%;
+  @include pc {
+    top: 52px;
+    left: 30px;
+  }
+}
+
+.cta__btn {
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+  height: 61px;
+  margin: 10px 16px;
+  padding-top: 10px;
+  color: #FFFFFF;
+  font-size: 24px;
+  font-weight: normal;
+  background-color: $color;
+  border-radius: 10px;
+  box-shadow: 0 6px #7A051C;
+
+  @include pc {
+    width: 479px;
+  }
+
+}
+
+.cta__btn:hover {
+  transform: scale(1.05, 1.05);
+  opacity: 0.9;
+}
+
+.cta__btn2 {
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+  height: 61px;
+  margin: 10px 16px;
+  padding-top: 10px;
+  color: #FFFFFF;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: $color;
+  border-radius: 40px;
+
+
+  @include pc {
+    width: 479px;
+    margin: 10px auto;
+  }
+
+}
+
+.cta__btn2:hover {
+  display: block;
+  background-color: #FFF;
+  color: $color;
+  border: solid $color 3px;
+}
+
+.mainvisual {
+  width: 100vw;
+
+  @include pc {
+    display: flex;
+  }
+
+  ul {
+    margin-left: -50px;
+    position: relative;
+
+    @include pc {
+      position: relative;
+      right:-20px;
+      margin: 0 0 0 100px;
+
+    }
+  }
+
+  ul::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    bottom: 0;
+    left: 40px;
+    right: 0;
+    box-shadow: inset 0 0 10px 15px #FFF;
+
+  }
+
+  img {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+
+    @include pc {
+      display: flex;
+
+      height: 720px;
+    }
+  }
+}
+
+.mainvisual__container {
+  text-align: left;
+
+  .mainvisual__text {
+    margin-left: 15px;
+  }
+
+  @include pc {
+    position: absolute;
+    top: 375px;
+    left: 5%;
+    z-index: 2;
+  }
+}
+
+.intro {
+  margin: 0 auto;
+  position: relative;
+  left: 0;
+  right: 0;
+  width: 100%;
+
+  .intro__box {
+    padding: 10px 0;
+    background-color: $color;
+    box-sizing: border-box;
+  }
+
+  .intro__content {
+    display: flex;
+    background-color: #fff;
+    height: 119px;
+    padding: 18px 21px;
+    box-sizing: border-box;
+    img {
+      margin-top: 10px;
+    }
+
+    .intro__content_text {
+      margin: 0 20px;
+      height: 40%;
+      vertical-align: middle;
+
+      h3 {
+        margin: 0 auto;
+      }
+
+      p {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .intro__content_left {
+    margin: 40px 20px 40px 0;
+    border-radius: 0 20px 20px 0;
+    position: relative;
+    left: 0;
+    right: 16px;
+    text-align: left;
+
+    @include pc {
+      width:50vw;
+      position: relative;
+      left: 0;
+      right: 20%;
+    }
+
+    img {
+      width: auto;
+      height: 80%;
+      // object-fit: cover;
+      // padding:10px 10px;
+    }
+  }
+
+  .intro__content_right {
+    margin: 40px 0 40px 20px;
+    border-radius: 20px 0 0 20px;
+    position: relative;
+    left: 16px;
+    right: 0;
+    text-align: left;
+
+    @include pc {
+      width:50vw;
+      position: relative;
+      left: 50%;
+      right: 0;
+    }
+
+    img {
+      width: auto;
+      height: 80%;
+      // object-fit: cover;
+      // padding:10px 10px;
+    }
+  }
+}
+
+.intro__title {
+  padding: 60px 81px 0 81px;
+}
+
+.intro__under {
+  display: block;
+  margin: 10px auto 20px;
+  width: 80px;
+  border-bottom: solid 2px #000;
+}
+
+.about {
+  background-image: url("../img/bg.gif");
+  object-fit: cover;
+  margin: 10px auto;
+  padding: 40px 16px 60px 16px;
+  animation: bg 10s infinite linear;
+  @keyframes bg {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: -360px 360px;
+    }
+  }
+  .about__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    text-align: center;
+
+    @include pc {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about__item {
+      background-color: #fff;
+      border-radius: 20px;
+
+      .about__item_title {
+        font-size: 24px;
+        margin-top: 30px;
+      }
+
+      .about__item_subtitle {
+        font-size: 16px;
+        margin-top: 15px;
+      }
+
+      .about__item_text {
+        width: 280px;
+        margin: 30px auto;
+        text-align: left;
+        color: #333333;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+
+
+.student__box {
+  position: relative;
+}
+
+.student__content_text {
+  margin: 0 auto;
+  position: relative;
+  background-color: #E9F1FB;
+  padding: 10px;
+  border-radius: 8px;
+  width: 343px;
+}
+
+.student__content_text:before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 48%;
+  border-style: solid;
+  border-width: 10px;
+  border-color: #E9F1FB transparent transparent transparent;
+}
+
+.student__content_intro {
+  margin: 30px auto;
+}
+
+.student__back {
+  background-color: #b2b0b0;
+  border-radius: 50%;
+  width: 120px;
+  margin: 0 auto;
+
+  img {
+    opacity: 2;
+    width: 120px;
+  }
+}
+
+.student__name {
+  font-size: 12px;
+}
+
+.text__container {
+  margin: 80px auto;
+  text-align: center;
+
+  h2 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: light;
+  }
+}
+
+
+.sitemap {
+  margin: 62px auto;
+  background-color: #E8E8E8;
+
+  .sitemap__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 62px 16px;
+    gap: 16px;
+
+    @include pc {
+      grid-template-columns: repeat(4, 1fr);
+      margin: 62px auto;
+      width: 900px;
+    }
+  }
+
+  p {
+    font-size: 10px;
+    font-weight: normal;
+  }
+}
+
+.sitemap__grid__item {
+  text-align: left;
+
+  .sitemap__item_title {
+    font-size: 16px;
+    margin-top: 62px;
+    line-height: 16px;
+  }
+
+  .sitemap__item_link {
+    text-align: left;
+    margin-left: -10px;
+
+    a {
+      color: inherit;
+    }
+  }
+}
