@@ -5,9 +5,10 @@ html {
 }
 
 body {
+  max-width: 860px;
   text-align: center;
-  margin: 0 auto;
   color: #333333;
+  margin-left: -10px;
 }
 
 li {
@@ -93,6 +94,11 @@ p {
   left: 6px;
   border: solid 1px #fff;
   z-index: 100;
+}
+
+.nav:hover {
+  opacity: 0.8;
+  transition: 0.3s;
 }
 
 .logo {
@@ -260,45 +266,80 @@ p {
 
 .mainvisual {
   width: 100vw;
+  /*
+  2枚目の画像のアニメーション実行タイミングを設定
+  「animation-delay: 5s;」で5秒後に実行
+  */
+  /*
+  3枚目の画像のアニメーション実行タイミングを設定
+  「animation-delay: 10s;」で10秒後に実行
+  */
 }
 @media screen and (min-width: 900px) {
   .mainvisual {
     display: flex;
+    vertical-align: bottom;
   }
 }
-.mainvisual ul {
-  margin-left: -50px;
+.mainvisual .fade__img_container {
   position: relative;
-}
-@media screen and (min-width: 900px) {
-  .mainvisual ul {
-    position: relative;
-    right: -20px;
-    margin: 0 0 0 100px;
-  }
-}
-.mainvisual ul::after {
-  position: absolute;
-  content: "";
-  top: 0;
-  bottom: 0;
-  left: 40px;
-  right: 0;
-  box-shadow: inset 0 0 10px 15px #FFF;
-}
-.mainvisual img {
   height: 300px;
   width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 @media screen and (min-width: 900px) {
-  .mainvisual img {
-    display: flex;
+  .mainvisual .fade__img_container {
+    margin: 0 0 0 30%;
+    height: 720px;
+    width: 80%;
+  }
+}
+.mainvisual .fade__list {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 720px;
+  animation: fade 15s infinite;
+}
+.mainvisual .fade__list .fade__img {
+  height: 300px;
+  width: 100vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+  box-shadow: 0 0 5px 5px rgba(103, 103, 103, 0.3);
+}
+@media screen and (min-width: 900px) {
+  .mainvisual .fade__list .fade__img {
     height: 720px;
   }
 }
+.mainvisual .fade__list:nth-child(1) {
+  animation-delay: 0s;
+}
+.mainvisual .fade__list:nth-child(2) {
+  animation-delay: 5s;
+}
+.mainvisual .fade__list:nth-child(3) {
+  animation-delay: 10s;
+}
 
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 .mainvisual__container {
   text-align: left;
 }
@@ -315,11 +356,11 @@ p {
 }
 
 .intro {
-  margin: 0 auto;
+  margin: 30px auto;
   position: relative;
   left: 0;
   right: 0;
-  width: 100%;
+  width: 100vw;
 }
 .intro .intro__box {
   padding: 10px 0;
@@ -329,9 +370,10 @@ p {
 .intro .intro__content {
   display: flex;
   background-color: #fff;
-  height: 119px;
+  height: auto;
   padding: 18px 21px;
   box-sizing: border-box;
+  overflow: hidden;
 }
 .intro .intro__content img {
   margin-top: 10px;
@@ -342,10 +384,11 @@ p {
   vertical-align: middle;
 }
 .intro .intro__content .intro__content_text h3 {
-  margin: 0 auto;
+  margin: 20 auto;
 }
 .intro .intro__content .intro__content_text p {
   font-size: 18px;
+  margin: 10 auto;
 }
 .intro .intro__content_left {
   margin: 40px 20px 40px 0;
@@ -354,6 +397,7 @@ p {
   left: 0;
   right: 16px;
   text-align: left;
+  animation: slide-left 1s ease-out 0s 1 forwards;
 }
 @media screen and (min-width: 900px) {
   .intro .intro__content_left {
@@ -367,6 +411,21 @@ p {
   width: auto;
   height: 80%;
 }
+.intro .intro__content_left .intro__content .slide-left {
+  animation: slide-left 0.5s ease-out 0s 1 forwards;
+}
+.intro .intro__content_left .intro__content .slide-right {
+  animation: slide-right 0.5s ease-out 0s 1 forwards;
+}
+@keyframes slide-left {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 .intro .intro__content_right {
   margin: 40px 0 40px 20px;
   border-radius: 20px 0 0 20px;
@@ -374,6 +433,7 @@ p {
   left: 16px;
   right: 0;
   text-align: left;
+  animation: slide-right 1s ease-out 0s 1 forwards;
 }
 @media screen and (min-width: 900px) {
   .intro .intro__content_right {
@@ -386,6 +446,15 @@ p {
 .intro .intro__content_right img {
   width: auto;
   height: 80%;
+}
+@keyframes slide-right {
+  0% {
+    transform: translateX(50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .intro__title {
@@ -401,6 +470,7 @@ p {
 
 .about {
   background-image: url("../img/bg.gif");
+  width: 100vw;
   -o-object-fit: cover;
      object-fit: cover;
   margin: 10px auto;
@@ -446,8 +516,28 @@ p {
   font-size: 16px;
 }
 
+.student {
+  width: 100vw;
+}
+
 .student__box {
   position: relative;
+}
+
+@media screen and (min-width: 900px) {
+  .student__content {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    margin: 30px auto;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .student__content_reverse {
+    display: flex;
+    flex-direction: row;
+  }
 }
 
 .student__content_text {
@@ -457,6 +547,12 @@ p {
   padding: 10px;
   border-radius: 8px;
   width: 343px;
+}
+@media screen and (min-width: 900px) {
+  .student__content_text {
+    margin: 0 0;
+    width: 514px;
+  }
 }
 
 .student__content_text:before {
@@ -468,9 +564,46 @@ p {
   border-width: 10px;
   border-color: #E9F1FB transparent transparent transparent;
 }
+@media screen and (min-width: 900px) {
+  .student__content_text:before {
+    content: "";
+    position: absolute;
+    top: 42%;
+    left: -3.5%;
+    border-style: solid;
+    border-width: 10px;
+    border-color: transparent #E9F1FB transparent transparent;
+  }
+}
+
+.student__content_text.reverse:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 48%;
+  border-style: solid;
+  border-width: 10px;
+  border-color: #E9F1FB transparent transparent transparent;
+}
+@media screen and (min-width: 900px) {
+  .student__content_text.reverse:before {
+    content: "";
+    position: absolute;
+    top: 42%;
+    left: 100%;
+    border-style: solid;
+    border-width: 10px;
+    border-color: transparent transparent transparent #E9F1FB;
+  }
+}
 
 .student__content_intro {
   margin: 30px auto;
+}
+@media screen and (min-width: 900px) {
+  .student__content_intro {
+    margin: 0 30px;
+  }
 }
 
 .student__back {
@@ -491,6 +624,7 @@ p {
 .text__container {
   margin: 80px auto;
   text-align: center;
+  width: 100vw;
 }
 .text__container h2 {
   font-size: 24px;
@@ -500,8 +634,34 @@ p {
   font-weight: light;
 }
 
+.student__content .balloon {
+  animation: balloon 0.5s ease-out 0s 1 forwards;
+}
+
+/*
+アニメーション処理
+
+最初は「transform: scale(0.1);」で要素を小さくした状態で、「opacity: 0;」で非表示にしておく
+0.5秒かけて要素を表示させながら元のサイズへ戻す
+*/
+@keyframes balloon {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.footer {
+  width: 100vw;
+  position: relative;
+  bottom: 0;
+}
+
 .sitemap {
-  margin: 62px auto;
+  margin: 62px auto 0;
   background-color: #E8E8E8;
 }
 .sitemap .sitemap__grid {
@@ -517,9 +677,10 @@ p {
     width: 900px;
   }
 }
-.sitemap p {
+.sitemap .credit {
   font-size: 10px;
   font-weight: normal;
+  margin-bottom: 0;
 }
 
 .sitemap__grid__item {

@@ -2,7 +2,7 @@
 
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="description" content="###">　
+    <meta name="description" content="###">
     <meta name="keywords" content="#">
     <title>BBB英会話スクール</title>
     <link href="../css/stylesheet.css" rel="stylesheet" type="text/css" />
@@ -29,28 +29,14 @@
                 </ul>
                 <a href="#" class="nav__item_btn">無料体験に申し込む</a>
             </div>
-            <script>
-                const openBtn = document.querySelector('.openbtn1');
-                const navList = document.querySelector('.nav__item');
-                openBtn.addEventListener('click', () => {
-                  if (openBtn.classList.contains('active')) {
-                    openBtn.classList.remove("active");
-                    navList.classList.add('hide');
-                    console.log("success");
-                  } else {
-                    openBtn.classList.add('active');
-                    navList.classList.remove('hide');
-                  }
-                });
-              </script>
         </nav>
     </header>
     <main>
         <div class="mainvisual">
-            <ul>
-                <li class="active"><img src="../img/mainvisual1.jpg" alt="英会話教室の様子"></li>
-                <li class="hide"><img src="../img/mainvisual2.jpg" alt="英会話教室の様子"></li>
-                <li class="hide"><img src="../img/mainvisual3.jpg" alt="英会話教室の様子"></li>
+            <ul class="fade__img_container">
+                <li class="fade__list"><img class="fade__img " src="../img/mainvisual1.jpg" alt="英会話教室の様子"></li>
+                <li class="fade__list"><img class="fade__img" src="../img/mainvisual2.jpg" alt="英会話教室の様子"></li>
+                <li class="fade__list"><img class="fade__img" src="../img/mainvisual3.jpg" alt="英会話教室の様子"></li>
             </ul>
             <div class="mainvisual__container">
                 <h2 class="mainvisual__text">話して学ぼう！<br>BBB英会話スクール</h2>
@@ -82,7 +68,7 @@
             <h2 class="intro__title">受講生の声</h2>
             <span class="intro__under"></span>
             <div class="student__box">
-                <div class="student__content">
+                <div class="student__content inview-balloon">
                     <p class="student__content_text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
                     <div class="student__content_intro">
                         <div class="student__back">
@@ -91,8 +77,8 @@
                         <p class="student__name">〇〇〇さん<br>大学生</p>
                     </div>
                 </div>
-                <div class="student__content student__content_reverse">
-                    <p class="student__content_text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                <div class="student__content student__content_reverse inview-balloon">
+                    <p class="student__content_text reverse">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
                     <div class="student__content_intro">
                         <div class="student__back">
                             <img class="student__img" src="../img/icon-student2.png" alt="生徒の声">
@@ -100,7 +86,7 @@
                         <p class="student__name">〇〇〇さん<br>会社員</p>
                     </div>
                 </div>
-                <div class="student__content">
+                <div class="student__content inview-balloon">
                     <p class="student__content_text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
                     <div class="student__content_intro">
                         <div class="student__back">
@@ -184,7 +170,9 @@
             <p class="credit">&copy;BBB English School</p>
         </div>
     </footer>
-
+    <script src="../js/jquery-3.7.0.min.js"></script>
+    <script src="../jquery.inview-master/jquery.inview.js"></script>
+    <script src="../js/script.js" type="module"></script>
 </body>
 
 </html>
